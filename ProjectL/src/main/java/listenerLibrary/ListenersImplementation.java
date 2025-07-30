@@ -15,7 +15,7 @@ import genericlibrary.BaseConfig;
 
 public class ListenersImplementation implements ITestListener {
 
-	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd-hh-mm-ss");
+	SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-dd-hh-mm-ss");
 	String currentdate = sdf.format(new Date());
 
 	@Override
