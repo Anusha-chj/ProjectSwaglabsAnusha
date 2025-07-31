@@ -7,17 +7,30 @@ import org.testng.Reporter;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
+import com.aventstack.extentreports.Status;
+
 import genericlibrary.BaseConfig;
 import pageRepository.CartPage;
 import pageRepository.CheckoutOverviewPage;
 import pageRepository.CheckoutPage;
 import pageRepository.HomePage;
+
 @Listeners(listenerLibrary.ListenersImplementation.class)
 public class Example1Test extends BaseConfig {
 
-	@Test(groups="RT", priority = 1, enabled = true, invocationCount = 1, dataProvider = "CheckoutInfo")
+	@Test(groups = "RT", priority = 1, enabled = true, invocationCount = 1, dataProvider = "CheckoutInfo")
 	public void orderProducts(String FirstName, String LastName, String ZipCode) {
-		
+
+		// Create the Test Information
+		test = report.createTest("Regresstion test");
+
+		// Steps Information
+		test.log(Status.INFO, "Step1: Launching the Browser Successful");
+
+		test.log(Status.INFO, "Step2: Navigating to the application via URL Successful");
+
+		test.log(Status.INFO, "Step3: Verify the web page Successful");
+
 		Reporter.log(FirstName);
 		Reporter.log(LastName);
 		Reporter.log(ZipCode);
@@ -37,6 +50,12 @@ public class Example1Test extends BaseConfig {
 		hpobj.getfourthproduct().click();
 		// Verify Add To Cart button is Displayed & is Enabled
 		Assert.assertTrue(hpobj.getaddtocartbtn4().isDisplayed() && hpobj.getaddtocartbtn4().isEnabled());
+		if (true == true) {
+			test.log(Status.PASS, "Step4: Verified the fourth product is Displayed");
+		} else {
+			test.log(Status.FAIL, "Step4: Verified the WebElement is not Displayed");
+		}
+
 		// Click on Add To Cart button
 		hpobj.getaddtocartbtn4().click();
 		// Verify Back To Products link is Displayed & is Enabled
@@ -115,8 +134,30 @@ public class Example1Test extends BaseConfig {
 
 		// Click on Finish button
 		ckovobj.getfinishbtn().click();
-		
+
 //		 Assert.fail();
+
+	}
+
+	@Test
+	public void Addproduct2() {
+		// create the test information
+
+		test = report.createTest("RegressionTest");
+
+		// steps information
+		test.log(Status.INFO, "Step1:Launching The Browser Succesfully");
+
+	}
+
+	@Test
+	public void Addproduct3() {
+		// create the test information
+
+		test = report.createTest("RegressionTest");
+
+		// steps information
+		test.log(Status.INFO, "Step1:Launching The Browser Succesfully");
 
 	}
 
